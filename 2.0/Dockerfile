@@ -22,6 +22,9 @@ RUN INSTALL_PKGS="ruby200 ruby200-ruby-devel ruby200-rubygem-rake v8314 ror40-ru
 # Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
+# Make sure the S2I scripts are executable
+RUN chmod +x $STI_SCRIPTS_PATH/*
+
 # Copy extra files to the image.
 COPY ./root/ /
 
